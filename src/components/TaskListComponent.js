@@ -1,5 +1,6 @@
 import React from 'react';
 import TaskService from '../service/TaskService.js';
+import Task from '../domain/Task.js';
 
 class TaskListComponent extends React.Component {
 
@@ -12,7 +13,11 @@ class TaskListComponent extends React.Component {
 
     componentDidMount() {
         TaskService.getTasks().then((response) => {
-            this.setState({tasks: response.data});
+            const taskList = response.data.map(function(obj) {
+                return new Task(obj.id, obj.title, obj.text, obj.status, obj.notes, obj.tags.join(','), obj.createdAt, obj.modifiedAt);
+            });
+
+            this.setState({tasks: taskList});
         });
     }
 

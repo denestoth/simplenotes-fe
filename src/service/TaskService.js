@@ -7,7 +7,7 @@ class TaskService{
 
     getTasks() {
         try {
-            return axios.get(TASKS_URL, {headers});   
+            return axios.get(TASKS_URL, {headers});
         } catch (error) {
             console.log(error);
         }
