@@ -20,6 +20,14 @@ class TaskService{
             console.log(error);
         }
     }
+
+    deleteTask(id) {
+        try {
+            return axios.delete(TASKS_URL+id, {headers});
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
 export default new TaskService()

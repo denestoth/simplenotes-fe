@@ -21,6 +21,11 @@ class TaskListComponent extends React.Component {
         });
     }
 
+    deleteTask = (event) => {
+        TaskService.deleteTask(event.target.value)
+        .then(this.render());
+    }
+
     render () {
         return (
             <div>
@@ -48,6 +53,7 @@ class TaskListComponent extends React.Component {
                                     <td>{task.tags}</td>
                                     <td>{task.createdAt}</td>
                                     <td>{task.modifiedAt}</td>
+                                    <td> <button onClick={this.deleteTask} value={task.id}>Delete</button> </td>
                                 </tr>
                             )
                         }
